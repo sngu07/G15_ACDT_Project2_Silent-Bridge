@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Silent Bridge - Final Report</title>
+    <style>
+        /* === Professional & Clean Typography === */
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Roboto:wght@300;400;500&display=swap');
+
+        body {
+            background-color: #f4f6f8;
+            color: #1a1a1a;
+            font-family: 'Inter', sans-serif;
+            margin: 0;
+            padding: 0;
+            line-height: 1.7;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* === Navigation Bar === */
+        nav {
+            background-color: rgba(255, 255, 255, 0.95);
+            padding: 15px 0;
+            text-align: center;
+            border-bottom: 1px solid #e1e4e8;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+        }
+        nav a {
+            color: #586069;
+            text-decoration: none;
+            font-weight: 600;
+            margin: 0 12px;
+            padding: 8px 16px;
+            border-radius: 6px;
+            transition: all 0.2s ease;
+            font-size: 0.95rem;
+        }
+        nav a:hover { background-color: #f6f8fa; color: #0366d6; }
+        nav a.active { background-color: #e1f0ff; color: #0366d6; }
+
+        /* === Main Container === */
+        .container {
+            max-width: 900px;
+            margin: 50px auto;
+            padding: 80px 60px;
+            background-color: #ffffff;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            border-radius: 12px;
+            border: 1px solid #eaeaea;
+        }
+
+        /* === Header === */
+        .report-header {
+            text-align: center;
+            margin-bottom: 60px;
+            padding-bottom: 40px;
+            border-bottom: 2px solid #f1f1f1;
+        }
+        .report-header h1 { 
+            margin: 0 0 10px 0; 
+            color: #111;
+            font-weight: 800; 
+            font-size: 2.5rem; 
+            letter-spacing: -0.5px;
+        }
+        .report-header .subtitle { 
+            font-size: 1.3rem; 
+            color: #555; 
+            margin-bottom: 25px; 
+            font-weight: 400;
+        }
+        .meta-box {
+            display: inline-block;
+            background-color: #f8f9fa;
+            padding: 15px 30px;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            color: #555;
+            border: 1px solid #eee;
+        }
+
+        /* === Sections === */
+        section { margin-bottom: 70px; }
+        
+        h2 {
+            font-size: 1.8rem;
+            color: #111;
+            font-weight: 700;
+            margin-top: 0;
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid #0366d6;
+            display: inline-block;
+        }
+        
+        h3 {
+            font-size: 1.3rem;
+            color: #2c3e50;
+            margin-top: 40px;
+            margin-bottom: 15px;
+            font-weight: 600;
+            border-left: 4px solid #0366d6;
+            padding-left: 12px;
+        }
+
+        p { 
+            font-size: 1.05rem; 
+            color: #444; 
+            margin-bottom: 20px; 
+            text-align: justify;
+            word-break: keep-all;
+        }
+
+        /* === Highlight Box === */
+        .highlight-box {
+            background-color: #f0f7ff;
+            border: 1px solid #cce5ff;
+            border-left: 5px solid #0366d6;
+            padding: 25px;
+            border-radius: 6px;
+            margin: 30px 0;
+            color: #004085;
+            font-size: 1.05rem;
+            line-height: 1.6;
+        }
+
+        /* === Tables === */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 30px 0;
+            font-size: 0.95rem;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+        th {
+            background-color: #0366d6;
+            color: #ffffff;
+            font-weight: 600;
+            padding: 12px 15px;
+            text-align: left;
+        }
+        td {
+            border: 1px solid #e1e4e8;
+            padding: 12px 15px;
+            color: #444;
+        }
+        tr:nth-child(even) { background-color: #f8f9fa; }
+
+        /* === Images (Preserved) === */
+        .figure-container {
+            margin: 40px 0;
+            text-align: center;
+        }
+        .figure-box {
+            display: inline-block;
+            background-color: #fff;
+            padding: 10px;
+            border-radius: 8px;
+            border: 1px solid #eee;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+        }
+        .figure-box img {
+            display: block;
+            max-width: 100%;
+            height: auto;
+            border-radius: 4px;
+        }
+        .figure-caption {
+            margin-top: 12px;
+            font-size: 0.9rem;
+            color: #666;
+            font-weight: 500;
+            font-style: italic;
+        }
+
+        /* === Lists === */
+        ul { list-style: none; padding-left: 10px; }
+        ul li {
+            position: relative;
+            padding-left: 25px;
+            margin-bottom: 10px;
+            color: #444;
+        }
+        ul li::before {
+            content: '•';
+            color: #0366d6;
+            font-weight: bold;
+            font-size: 1.5rem;
+            position: absolute;
+            left: 0;
+            top: -5px;
+        }
+
+        /* === References === */
+        .references {
+            background-color: #f8f9fa;
+            padding: 40px;
+            border-radius: 8px;
+            border: 1px solid #eee;
+            font-size: 0.9rem;
+        }
+        .references h2 { border: none; font-size: 1.4rem; margin-bottom: 20px; }
+        .reference-item { margin-bottom: 10px; color: #555; }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="/">HOME</a>
+        <a href="/about">GUIDE</a>
+        <a href="/report" class="active">REPORT</a>
+    </nav>
+
+    <div class="container">
+        <div class="report-header">
+            <h1>PROJECT 2 - Final Report</h1>
+            <div class="subtitle">Silent Bridge: An Indoor Guide Robot Controlled by Sign Language Gestures</div>
+            <div class="meta-box">
+                <strong>GROUP 15</strong><br>
+                Minsun Jee, Victory Avrillia, Yewon Jeung, Jeonghyun Kim, Seungwoo Kim, Siwoong Yoon
+            </div>
+        </div>
+
+        <section>
+            <h2>Executive Summary</h2>
+            <div class="highlight-box">
+                "Silent Bridge" is a gesture-controlled indoor navigation robot designed to bridge communication gaps for Deaf and Hard-of-Hearing (DHH) individuals. By eliminating the need for verbal interaction, it allows users to navigate everyday spaces independently.
+            </div>
+            <p>
+                To tackle the issue of communication barriers in public spaces, we developed a system that recognizes a small set of Korean Sign Language (KSL) commands: <em>Room 1, Room 2, Elevator, Toilet, and "You've worked hard."</em> Using a lightweight model on a Raspberry Pi, the robot interprets KSL and guides users via line tracking and LED cues.
+            </p>
+            <p>
+                <strong>Key Performance Indicators (KPIs) & Results:</strong><br>
+                The prototype successfully met its targets: <strong>95%</strong> gesture recognition accuracy, <strong>≤ 3 seconds</strong> response time, and reliable obstacle detection. The results demonstrate that "Silent Bridge" offers a practical, inclusive solution for independent navigation.
+            </p>
+        </section>
+
+        <section>
+            <h2>1. Introduction</h2>
+            
+            <h3>1.1. Background</h3>
+            <p>
+                Our motivation originated from reflecting on accessibility challenges for DHH individuals. Hearing loss exists on a wide spectrum [1], making lip-reading unreliable and cognitively demanding. While hearing aids help, they struggle in noisy environments [2]. Public spaces often lack visual cues [3], leading to stress and miscommunication. "Silent Bridge" focuses on minimizing this friction by enabling navigation through simple KSL gestures.
+            </p>
+
+            <h3>1.2. User Persona</h3>
+            <p>
+                The persona below summarizes the context of our intended user group, informing our design assumptions for a system that relies primarily on visual communication.
+            </p>
+            <div class="figure-container">
+                <div class="figure-box">
+                    <img src="{{ url_for('static', filename='persona.png') }}" alt="User Persona Diagram">
+                </div>
+                <div class="figure-caption">Figure 1. User Persona</div>
+            </div>
+
+            <h3>1.3. Service Concept & KPIs</h3>
+            <p>
+                Users perform KSL commands (Room 1, Room 2, Toilet, Elevator). Once recognized, the robot guides the user with LED indicators (Green: Go, Red: Stop). The service is defined by four KPIs:
+            </p>
+            <ul>
+                <li><strong>Gesture Accuracy:</strong> Target 95% across different users.</li>
+                <li><strong>Response Latency:</strong> Target ≤ 3 seconds for smooth flow.</li>
+                <li><strong>Navigation Accuracy:</strong> Target 95% correct arrival.</li>
+                <li><strong>Obstacle Detection:</strong> Target ≥ 95% safety reliability.</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>2. Data</h2>
+            
+            <h3>2.1. Methodology</h3>
+            <p>
+                Due to Raspberry Pi hardware constraints [4], we refined our gesture set to five essential commands. We adopted a <strong>fully self-recorded data collection approach</strong> to control complexity and reduce landmarks (6 key points per hand), ensuring real-time performance.
+            </p>
+            <div class="figure-container">
+                <div class="figure-box">
+                    <img src="{{ url_for('static', filename='data_pipeline.png') }}" alt="Data Collection Pipeline">
+                </div>
+                <div class="figure-caption">Figure 2. Data Collection Pipeline</div>
+            </div>
+
+            <h3>2.2. Sources and Licenses</h3>
+            <table>
+                <tr>
+                    <th>Resource</th>
+                    <th>License</th>
+                    <th>Usage</th>
+                </tr>
+                <tr>
+                    <td>Public KSL datasets</td>
+                    <td>Restricted</td>
+                    <td>Excluded (Not ML-ready)</td>
+                </tr>
+                <tr>
+                    <td>National KSL Dictionary</td>
+                    <td>BY-NC-ND</td>
+                    <td>Reference only</td>
+                </tr>
+                <tr>
+                    <td><strong>Team Self-recorded Data</strong></td>
+                    <td><strong>Internal Use</strong></td>
+                    <td><strong>Primary Training Data</strong></td>
+                </tr>
+            </table>
+
+            <h3>2.3. Dataset Summary</h3>
+            <p>
+                We collected data from 6 team members in controlled indoor lighting to ensure diversity in hand shape and signing style while maintaining feasibility for the hardware.
+            </p>
+            <table>
+                <tr>
+                    <th>Attribute</th>
+                    <th>Details</th>
+                </tr>
+                <tr>
+                    <td><strong>Classes</strong></td>
+                    <td>Room1, Room2, Elevator, Toilet, Thankyou</td>
+                </tr>
+                <tr>
+                    <td><strong>Data Format</strong></td>
+                    <td>20 frames x 6 landmarks x 3 coords (360 features)</td>
+                </tr>
+                <tr>
+                    <td><strong>Total Samples</strong></td>
+                    <td>461 samples (6 Signers)</td>
+                </tr>
+            </table>
+        </section>
+
+        <section>
+            <h2>3. Model Development</h2>
+            
+            <h3>3.1. Tools & Frameworks</h3>
+            <ul>
+                <li><strong>MediaPipe Hands:</strong> Efficient on-device hand landmark extraction.</li>
+                <li><strong>OpenCV:</strong> Video capture and preprocessing.</li>
+                <li><strong>Scikit-learn:</strong> Random Forest Classifier for fast CPU inference.</li>
+                <li><strong>Raspbot_Lib:</strong> Hardware interface for motors and sensors.</li>
+            </ul>
+
+            <h3>3.2. Training & Results</h3>
+            <p>
+                <strong>Stage 1 (Collection):</strong> Captured 20-frame sequences, extracting 18 features per frame (wrist + 5 fingertips).<br>
+                <strong>Stage 2 (Training):</strong> Trained a Random Forest classifier (n_estimators=250, max_depth=25).
+            </p>
+            <div class="highlight-box">
+                <strong>Performance:</strong> The model achieved <strong>98.91% test accuracy</strong>. In baseline tests, single-sample inference latency was approximately <strong>34ms</strong>, validating its suitability for real-time interaction on the Raspberry Pi.
+            </div>
+        </section>
+
+        <section>
+            <h2>4. Service Implementation</h2>
+            
+            <h3>4.1. Platform & UX Flow</h3>
+            <p>
+                We chose Raspberry Pi for its ability to handle both AI inference and direct hardware control (GPIO). The UX flow ensures clarity for DHH users:
+            </p>
+            <div class="figure-container">
+                <div class="figure-box">
+                    <img src="{{ url_for('static', filename='system_flow.png') }}" alt="System UX Flow">
+                </div>
+                <div class="figure-caption">Figure 3. System UX Flowchart</div>
+            </div>
+            <p>
+                1. <strong>Trigger:</strong> Ultrasonic proximity detection.<br>
+                2. <strong>Recognition:</strong> Captures gesture; Retries if confidence < 0.45.<br>
+                3. <strong>Navigation:</strong> Line tracking with intersection counting.<br>
+                4. <strong>Safety:</strong> Stops on obstacle detection.<br>
+                5. <strong>Completion:</strong> Confirms arrival, waits for "Good Job" gesture to reset.
+            </p>
+
+            <h3>4.2. User Testing Results</h3>
+            <p>Testing was conducted with 6 group members to evaluate system stability.</p>
+            <table>
+                <tr>
+                    <th>Participant</th>
+                    <th>Performance</th>
+                    <th>Observed Issues</th>
+                </tr>
+                <tr>
+                    <td>P1 (Minsun)</td>
+                    <td>High</td>
+                    <td>'Toilet' gesture required retries due to speed.</td>
+                </tr>
+                <tr>
+                    <td>P2 (Victory)</td>
+                    <td>Medium-High</td>
+                    <td>Room1/Room2 confusion due to hand posture.</td>
+                </tr>
+                <tr>
+                    <td>P3 (Yewon)</td>
+                    <td>High</td>
+                    <td>Stable holding led to high confidence.</td>
+                </tr>
+                <tr>
+                    <td>P4 (Jeonghyun)</td>
+                    <td>Medium</td>
+                    <td>'GoodJob' unstable when duration was short.</td>
+                </tr>
+                <tr>
+                    <td>P5 (Seungwoo)</td>
+                    <td>High</td>
+                    <td>Clear, slow motion yielded best results.</td>
+                </tr>
+                 <tr>
+                    <td>P6 (Siwoong)</td>
+                    <td>Medium-High</td>
+                    <td>Camera angle misalignment caused drops.</td>
+                </tr>
+            </table>
+        </section>
+
+        <section>
+            <h2>5. Discussion</h2>
+            
+            <h3>5.1. Evaluation</h3>
+            <p>
+                <strong>Functional:</strong> The reduced-landmark approach enabled reliable gesture capture without overheating the Pi. Navigation logic (90° turns, obstacle stop) functioned consistently.<br>
+                <strong>UX:</strong> Auto-adjusting camera angles and visual LED feedback proved essential for non-auditory interaction.
+            </p>
+
+            <h3>5.2. Challenges & Limitations</h3>
+            <p>
+                <strong>Challenges:</strong> Raspberry Pi 5 power demands caused minor motor variances [7]. <br>
+                <strong>Limitations:</strong> The system focuses on Sign Language Recognition (SLR), not Translation (SLT) [8]. It is sensitive to lighting conditions [9], and the line-tracking navigation does not scale to complex open spaces [13].
+            </p>
+
+            <h3>5.3. Future Work</h3>
+            <ul>
+                <li><strong>Robust Vision:</strong> Transition to depth-based or skeleton-based detectors (e.g., RealSense, YOLO) [11].</li>
+                <li><strong>Advanced Navigation:</strong> Implement SLAM (Simultaneous Localization and Mapping) for map-based autonomy.</li>
+                <li><strong>Hardware:</strong> Upgrade to NVIDIA Jetson for heavier model processing.</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>6. Conclusion</h2>
+            <p>
+                "Silent Bridge" successfully demonstrates a proof-of-concept for an accessible navigation robot. By integrating lightweight KSL recognition with autonomous mobility, we addressed a specific gap in indoor accessibility. While hardware limitations constrained the vocabulary size, the system met its core KPIs, proving that human-centered AI design can significantly improve inclusivity for the DHH community.
+            </p>
+        </section>
+
+        <section class="references">
+            <h2>References</h2>
+            <div class="reference-item">[1] Medium, "Everything is on a spectrum," https://medium.com/fourth-wave/everything-is-on-a-spectrum-a1c1f3daeef</div>
+            <div class="reference-item">[2] MDPI, "Hearing Aid Limitations," https://www.mdpi.com/2039-4349/15/4/89</div>
+            <div class="reference-item">[3] IJHSS, "Visual Cues in Public Spaces," 2024.</div>
+            <div class="reference-item">[4] MDPI Electronics, "Edge Computing Constraints," https://www.mdpi.com/2079-9292/14/20/3976</div>
+            <div class="reference-item">[5] Sciendo, "JSIOT 2024," https://sciendo.com/2/v2/download/article/10.2478/jsiot-2024-0006.pdf</div>
+            <div class="reference-item">[6] Arxiv, "Sign Language Datasets," https://arxiv.org/pdf/2204.03328</div>
+            <div class="reference-item">[7-13] Various Technical References on Raspberry Pi Power, SLT vs SLR, and SLAM Navigation.</div>
+        </section>
+
+    </div>
+
+</body>
+</html>

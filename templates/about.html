@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Guide</title>
+    <style>
+        body {
+            background-color: #f8f9fa;
+            color: #3c4043;
+            font-family: 'Google Sans', Roboto, Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+        }
+
+        /* === 네비게이션 === */
+        nav {
+            background-color: #ffffff;
+            padding: 15px 0;
+            text-align: center;
+            box-shadow: 0 1px 4px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        nav a {
+            color: #5f6368;
+            text-decoration: none;
+            font-weight: 500;
+            margin: 0 15px;
+            padding: 8px 16px;
+            border-radius: 20px;
+            transition: 0.2s;
+        }
+        nav a:hover { background-color: #f1f3f4; color: #1a73e8; }
+        nav a.active { color: #1a73e8; background-color: #e8f0fe; }
+
+        /* === 컨테이너 (흰색 카드) === */
+        .container {
+            max-width: 900px;
+            margin: 40px auto;
+            background-color: #ffffff;
+            padding: 40px;
+            border-radius: 16px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+        }
+        
+        h1 { text-align: center; color: #1a73e8; margin-bottom: 40px; font-weight: 400; }
+        h2 { color: #202124; border-bottom: 2px solid #f1f3f4; padding-bottom: 10px; margin-top: 40px; font-size: 1.5rem; }
+        p { color: #5f6368; }
+
+        /* === 테이블 스타일 (Clean Style) === */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        th {
+            background-color: #f1f3f4;
+            color: #202124;
+            font-weight: 600;
+            padding: 16px;
+            text-align: left;
+        }
+        td {
+            padding: 16px;
+            border-bottom: 1px solid #f1f3f4;
+            vertical-align: middle;
+            color: #3c4043;
+        }
+        tr:last-child td { border-bottom: none; }
+        td b { color: #1a73e8; font-weight: 600; }
+
+        /* === 이미지 그룹 === */
+        .img-group { display: flex; align-items: center; gap: 10px; }
+        .sign-img {
+            width: 90px;
+            height: auto;
+            border-radius: 8px;
+            border: 1px solid #e0e0e0;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+        .plus-sign {
+            font-size: 1.2rem;
+            color: #9aa0a6;
+            font-weight: bold;
+        }
+
+        /* === 버튼 스타일 === */
+        .btn-home {
+            display: block;
+            width: 220px;
+            margin: 50px auto 0;
+            padding: 14px;
+            background-color: #1a73e8; /* 구글 블루 */
+            color: white;
+            text-align: center;
+            text-decoration: none;
+            font-size: 1.1rem;
+            font-weight: 500;
+            border-radius: 28px; /* 둥근 버튼 */
+            box-shadow: 0 4px 12px rgba(26, 115, 232, 0.3);
+            transition: 0.3s;
+        }
+        .btn-home:hover {
+            background-color: #1557b0;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(26, 115, 232, 0.4);
+        }
+
+        ul { color: #5f6368; }
+        li { margin-bottom: 8px; }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="/">HOME</a>
+        <a href="/about" class="active">GUIDE</a>
+        <a href="/report">REPORT</a>
+    </nav>
+
+    <div class="container">
+        <h1>Project Guide & Manual</h1>
+
+        <section>
+            <h2>Overview</h2>
+            <p>
+                This project is a <b>Sign Language Controlled Robot System</b> utilizing Raspbot and Computer Vision (MediaPipe).
+                The system recognizes hand gestures via webcam and navigates the robot to specific locations on the map.
+            </p>
+        </section>
+
+        <section>
+            <h2>Commands</h2>
+            <p>Perform the following gestures in front of the camera:</p>
+            
+            <table>
+                <thead>
+                    <tr>
+                        <th width="15%">Label</th>
+                        <th width="35%">Gesture</th>
+                        <th width="20%">Action</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><b>TOILET</b></td>
+                        <td><div class="img-group"><img src="{{ url_for('static', filename='toilet.jpg') }}" alt="Toilet" class="sign-img"></div></td>
+                        <td>Go to Toilet</td>
+                        <td>Top area of the map.</td>
+                    </tr>
+                    <tr>
+                        <td><b>ROOM 1</b></td>
+                        <td>
+                            <div class="img-group">
+                                <img src="{{ url_for('static', filename='room.jpg') }}" alt="Room" class="sign-img">
+                                <span class="plus-sign">+</span>
+                                <img src="{{ url_for('static', filename='one.jpg') }}" alt="One" class="sign-img">
+                            </div>
+                        </td>
+                        <td>Go to Room 1</td>
+                        <td>Bottom-center room.</td>
+                    </tr>
+                    <tr>
+                        <td><b>ROOM 2</b></td>
+                        <td>
+                            <div class="img-group">
+                                <img src="{{ url_for('static', filename='room.jpg') }}" alt="Room" class="sign-img">
+                                <span class="plus-sign">+</span>
+                                <img src="{{ url_for('static', filename='two.jpg') }}" alt="Two" class="sign-img">
+                            </div>
+                        </td>
+                        <td>Go to Room 2</td>
+                        <td>Top-center room.</td>
+                    </tr>
+                    <tr>
+                        <td><b>ELEVATOR</b></td>
+                        <td><div class="img-group"><img src="{{ url_for('static', filename='elevator.jpg') }}" alt="Elevator" class="sign-img"></div></td>
+                        <td>Go to Elevator</td>
+                        <td>Bottom area (Lobby).</td>
+                    </tr>
+                    <tr>
+                        <td><b>THANK YOU</b></td>
+                        <td><div class="img-group"><img src="{{ url_for('static', filename='thankyou.jpg') }}" alt="Thank You" class="sign-img"></div></td>
+                        <td>Return Home</td>
+                        <td>Robot returns to base.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section>
+            <h2>Tips</h2>
+            <ul>
+                <li>Keep your hands <b>50cm ~ 1m</b> away from the camera.</li>
+                <li>Ensure your hands stay within the camera frame.</li>
+                <li>The robot responds when confidence exceeds <b>80%</b>.</li>
+            </ul>
+        </section>
+
+        <a href="/" class="btn-home">Start Simulation</a>
+    </div>
+
+</body>
+</html>

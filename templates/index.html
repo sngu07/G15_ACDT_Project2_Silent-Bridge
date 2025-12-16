@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Robot Simulation Control</title>
+    <style>
+        /* === Teachable Machine Style Base === */
+        body {
+            background-color: #f8f9fa; /* 밝은 회색 배경 */
+            color: #202124;            /* 진한 회색 텍스트 */
+            font-family: 'Google Sans', Roboto, Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+
+        /* === 네비게이션 === */
+        nav {
+            background-color: #ffffff;
+            padding: 15px 0;
+            box-shadow: 0 1px 4px rgba(0,0,0,0.1);
+            margin-bottom: 40px;
+        }
+        nav a {
+            color: #5f6368;
+            text-decoration: none;
+            font-weight: 500;
+            margin: 0 15px;
+            font-size: 1rem;
+            padding: 8px 16px;
+            border-radius: 20px;
+            transition: 0.2s;
+        }
+        nav a:hover {
+            background-color: #f1f3f4;
+            color: #1a73e8; /* 구글 블루 */
+        }
+        nav a.active {
+            color: #1a73e8;
+            background-color: #e8f0fe;
+        }
+
+        /* === 헤더 === */
+        h1 {
+            font-weight: 400;
+            color: #202124;
+            margin-bottom: 30px;
+            font-size: 2rem;
+        }
+
+        /* === 비디오 컨테이너 (카드 스타일) === */
+        .video-card {
+            background: white;
+            display: inline-block;
+            padding: 20px;
+            border-radius: 16px; /* 둥근 모서리 */
+            box-shadow: 0 4px 24px rgba(0,0,0,0.08); /* 부드러운 그림자 */
+            margin-bottom: 40px;
+        }
+        
+        img {
+            display: block;
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            border: 1px solid #eee;
+        }
+    </style>
+</head>
+<body>
+    
+    <nav>
+        <a href="/" class="active">HOME</a>
+        <a href="/about">GUIDE</a>
+        <a href="/report">REPORT</a>
+    </nav>
+
+    <h1>Sign Language Robot Controller</h1>
+    
+    <div class="video-card">
+        <img src="{{ url_for('video_feed') }}" alt="Simulation Stream">
+    </div>
+
+</body>
+</html>
